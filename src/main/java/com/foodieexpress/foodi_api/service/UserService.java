@@ -18,5 +18,12 @@ public class UserService {
         userRepository.save(user);
         return "✅ User registered successfully!";
     }
-}
 
+
+public String loginUser(String email, String password) {
+    User user = userRepository.findByEmail(email);
+    if (user != null && user.getPassword().equals(password)) {
+        return "✅ Login successful for user: " + user.getName();
+    }
+    return "❌ Invalid email or password!";
+}}
